@@ -2,6 +2,10 @@ package com.example.antsampleproject.data.repostory
 
 import com.example.antsampleproject.api.ApiService
 import com.example.antsampleproject.data.model.TestApiModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import okhttp3.ResponseBody
 import retrofit2.Response
 import javax.inject.Inject
@@ -18,11 +22,19 @@ class SplashApiRepository @Inject constructor(private val apiService: ApiService
 
     /**
      * 테스트 get API
+     * Retrofit2 + Flow 를 이용한 방식
+     * Flow = RxJava 와 동일
+     * kotlin 에서 사용하는 타입으로
+     * 비동기 작업을 할때 성능적 보장이 된다
      * **/
-    suspend fun getTestApi() : Response<TestApiModel> {
-
-        return apiService.getTestApi()
+    fun getTestApi() : Flow<TestApiModel> = flow {
+        val response = apiService.getTestApi()
+        if(response.isSuccessful){
+            emit(response.body()!!)
+        }
+        else{
+            throw Exception("Error: ${response.message()}")
+        }
     }
-
 
 }

@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.antsampleproject.data.repostory.LoginApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,19 +34,27 @@ class LoginViewModel @Inject constructor(private val repository: LoginApiReposit
      * **/
     fun setIdPw(id : String , pw : String){
         viewModelScope.launch {
-            val response = repository.setTestApi(id,pw)
-
-            when(response.isSuccessful){
-                true ->{
-                    Log.d(TAG,"로그인 서버통신 성공")
-                    _isLoginCheck.value = true
-                }
-                false ->{
-                    Log.d(TAG,"로그인 서버통신 실패")
+            repository.setTestApi(id,pw)
+                .catch {
+                    /**
+                     * 예외 발생 시 호출됨
+                     * **/
+                    Log.d("여기","catch"+it.message)
                     _isLoginCheck.value = false
                 }
-
-            }
+                .onCompletion {
+                    /**
+                     * Flow가 완료되었을 때 호출됨 (성공, 실패 모두 포함)
+                     * **/
+                    Log.d("여기","onCompletion")
+                    _isLoginCheck.value = true
+                }
+                .collectLatest {
+                    /**
+                     * API 에서 받은 최신데이터 수집
+                     * **/
+                    Log.d("여기","collectLatest"+it.data)
+                }
         }
     }
 }

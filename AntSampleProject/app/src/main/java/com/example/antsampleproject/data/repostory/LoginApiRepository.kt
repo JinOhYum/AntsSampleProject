@@ -2,6 +2,8 @@ package com.example.antsampleproject.data.repostory
 
 import com.example.antsampleproject.api.ApiService
 import com.example.antsampleproject.data.model.TestApiModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -18,8 +20,15 @@ class LoginApiRepository @Inject constructor(private val apiService: ApiService)
     /**
      * 테스트 set API
      * **/
-    suspend fun setTestApi(id : String , pw : String) : Response<TestApiModel> {
+    fun setTestApi(id : String , pw : String) : Flow<TestApiModel> = flow{
 
-        return apiService.setTestApi(id,pw)
+        val response = apiService.setTestApi(id,pw)
+
+        if(response.isSuccessful){
+            emit(response.body()!!)
+        }
+        else{
+            throw Exception("Error: ${response.message()}")
+        }
     }
 }
