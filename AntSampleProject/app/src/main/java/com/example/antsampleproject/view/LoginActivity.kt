@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * AndroidEntryPoint = Hilt 에서 제공되는 DI 함수로 Activity 위에 어노테이션으로 지정 해주면된다
+ * AndroidEntryPoint = Hilt 에서 제공되는 DI 함수로 DI 를 사용하기 위해 Activity 위에 어노테이션으로 지정
  * **/
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -41,6 +41,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun init(){
         binding.btLogin.setOnClickListener {
+            /**
+             * EditText 공백 체크
+             * **/
             if(binding.etId.text.toString().replace(" ","") == "" || binding.etPw.text.toString().replace(" ","") == ""){
                 snackBar = Snackbar.make(it , "아이디 , 비밀번호 입력해주세요" , Snackbar.LENGTH_SHORT)
                 snackBar.setAction("확인") {
@@ -51,6 +54,9 @@ class LoginActivity : AppCompatActivity() {
                     snackBar.show()
                 }
             }
+            /**
+             * EditText 공백이 아니면 ViewModel 에 setIdPw 함수로 데이터 전달
+             * **/
             else{
                 val id = binding.etId.text.toString()
                 val pw = binding.etPw.text.toString()
@@ -60,7 +66,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * 옵저버 관리 함수
+     * **/
     private fun onObserve(){
+        /**
+         * 로그인 API 호출 응답이 정상적으로 와서 isLoginCheck 데이터 변경되었을때 옵저버 호출
+         * **/
         viewModel.isLoginCheck.observe(this){data->
             if(data){
                 val intent = Intent(this , MainActivity::class.java)
