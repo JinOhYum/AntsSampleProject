@@ -1,5 +1,6 @@
 package com.example.antsampleproject.adapter
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -55,6 +56,7 @@ class CanvasAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
      * **/
     private inner class CanvasViewHolder(val binding : ItemLayoutMyChatBinding) : RecyclerView.ViewHolder(binding.root){
 
+        @SuppressLint("SetTextI18n")
         fun bind(item : MessageModel){
             binding.tvOpposite.text = item.message
         }

@@ -222,9 +222,8 @@ class CanvasActivity : AppCompatActivity() {
 
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.messageList.collect{
-                adapter.setData(it)
                 lifecycleScope.launch(Dispatchers.Main) {
-                    Log.d("여기","갯수"+adapter.itemCount)
+                    adapter.setData(it)
                     binding.chatLayout.rvMessage.scrollToPosition(adapter.itemCount-1)
                 }
 
