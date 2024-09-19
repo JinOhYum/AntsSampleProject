@@ -1,7 +1,9 @@
 package com.example.antsampleproject.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.antsampleproject.data.model.MessageModel
 import com.example.antsampleproject.util.DefineConfig
@@ -26,7 +28,7 @@ class CanvasViewModel @Inject constructor(): ViewModel() {
     private var mSecondSocket : Socket? = null
 
     private var _messageList : MutableSharedFlow<MessageModel> = MutableSharedFlow<MessageModel>()
-    val messageList : SharedFlow<MessageModel> get() = _messageList
+    val messageList : LiveData<MessageModel> get() = _messageList.asLiveData()
 
     /**
      * 서버 연결 확인용 flow
@@ -35,13 +37,13 @@ class CanvasViewModel @Inject constructor(): ViewModel() {
      * 서버 연결 확인 같은경우 항상 값을 갖고있어야되고 상태값을 확인해 SnackBar 를 띄우기 위해 StateFlow 사용
      * **/
     private val _networkCheck = MutableStateFlow<Int>(-1) //-1:네트워크 대기 , 1:네트워크 연결 , 2:네트워크 종료 , 3:네트워크 에러
-    val networkCheck : StateFlow<Int> get() = _networkCheck
+    val networkCheck : LiveData<Int> get() = _networkCheck.asLiveData()
 
     /**
      * 대화방 소켓 네트워크 체크용
      * **/
     private val _secondNetworkCheck = MutableStateFlow<Int>(-1) //-1:네트워크 대기 , 1:네트워크 연결 , 2:네트워크 종료 , 3:네트워크 에러
-    val secondNetworkCheck : StateFlow<Int> get() = _networkCheck
+    val secondNetworkCheck : LiveData<Int> get() = _networkCheck.asLiveData()
 
 
     /**
@@ -52,7 +54,7 @@ class CanvasViewModel @Inject constructor(): ViewModel() {
      * Flow 의 경우 View 가 onDestroy 일때 까지 데이터를 수집 받는다
      * **/
     private val _dataFrom = MutableSharedFlow<JSONObject>()
-    val dataFrom : SharedFlow<JSONObject> get() = _dataFrom
+    val dataFrom : LiveData<JSONObject> get() = _dataFrom.asLiveData()
 
 
     private var deviceId = ""//Device 고유 값

@@ -176,58 +176,39 @@ class CanvasActivity : AppCompatActivity() {
      * 옵저버 관리
      * **/
     private fun onObserve(){
-        /**
-         * flow 는 하나의 코루틴에서 동작을 해야함
-         * **/
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.dataFrom.collect{ jsonObject->
-                /**
-                 * key 값에 빈값 확인
-                 * **/
-                if (jsonObject.has("drawing_x") && jsonObject.has("drawing_y") && jsonObject.has("action")) {
-                    val x = jsonObject.getString("drawing_x").toFloat()
-                    val y = jsonObject.getString("drawing_y").toFloat()
-                    val action = jsonObject.getString("action").toInt()
+        viewModel.dataFrom.observe(this){jsonObject->
+            /**
+             * key 값에 빈값 확인
+             * **/
+            if (jsonObject.has("drawing_x") && jsonObject.has("drawing_y") && jsonObject.has("action")) {
+                val x = jsonObject.getString("drawing_x").toFloat()
+                val y = jsonObject.getString("drawing_y").toFloat()
+                val action = jsonObject.getString("action").toInt()
 
-                    /**
-                     * Socket 으로 받은 상대방의 그림 데이터를 본인 그림판에 전달
-                     * 그림을 그리는 동작은 Main쓰레드에서 동작을 해야하기에
-                     * Main 코루틴으로 감쌈
-                     * **/
-                    lifecycleScope.launch(Dispatchers.Main){
-                        binding.drawing.drawAt(x, y, action)
-                    }
+                binding.drawing.drawAt(x, y, action)
 
-                } else {
-                    Log.d("여기", "필수 키가 누락되었습니다: $jsonObject")
-                }
+            } else {
+                Log.d("여기", "필수 키가 누락되었습니다: $jsonObject")
             }
         }
 
         /**
          * Socket 연결상태 관리 옵저버
          * **/
-        lifecycleScope.launch(Dispatchers.IO){
-            viewModel.networkCheck.collectLatest {
-                if(it != -1){
-                    showSnackBar(it,0)
-                }
+        viewModel.networkCheck.observe(this){
+            if(it != -1){
+                showSnackBar(it,0)
             }
-            viewModel.secondNetworkCheck.collectLatest {
-                if(it != -1){
-                    showSnackBar(it,1)
-                }
+        }
+        viewModel.secondNetworkCheck.observe(this){
+            if(it != -1){
+                showSnackBar(it,1)
             }
         }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.messageList.collect{
-                lifecycleScope.launch(Dispatchers.Main) {
-                    adapter.setData(it)
-                    binding.chatLayout.rvMessage.scrollToPosition(adapter.itemCount-1)
-                }
-
-            }
+        viewModel.messageList.observe(this){
+            adapter.setData(it)
+            binding.chatLayout.rvMessage.scrollToPosition(adapter.itemCount-1)
         }
 
     }
