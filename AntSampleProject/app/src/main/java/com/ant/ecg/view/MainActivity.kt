@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ant.ecg.databinding.ActivityMainBinding
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,10 +14,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
-            val intent : Intent = Intent(this,CanvasActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 

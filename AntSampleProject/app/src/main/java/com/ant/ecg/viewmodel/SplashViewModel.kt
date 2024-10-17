@@ -31,13 +31,18 @@ class SplashViewModel @Inject constructor(private val repository: SplashApiRepos
      * LiveData 는 데이터 수정이 불가능하며 최신 데이터 및 데이터 변동사항만 알수있음
      *
      **/
-
     private val _testApiResponse = MutableLiveData<TestApiModel>()
     val testApiResponse : LiveData<TestApiModel> get() = _testApiResponse
 
 
     private var _isApiSuccess : Boolean  = false
     val isApiSuccess : Boolean get() = _isApiSuccess
+
+    /**
+     * 권한 재요청에 사용할 변수
+     * **/
+    var isPermissions = false
+
 
     /**
      * API 호출
