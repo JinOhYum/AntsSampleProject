@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.antsampleproject'
+    namespace 'com.ant.ecg'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.antsampleproject"
+        applicationId "com.ant.ecg"
         minSdk 29
         targetSdk 34
         versionCode 1

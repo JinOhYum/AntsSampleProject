@@ -28,7 +28,7 @@
                 android:text="전체 지우기" />
 
         </LinearLayout>
-        <com.example.antsampleproject.util.DrawingView
+        <com.ant.ecg.util.DrawingView
             android:id="@+id/drawing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
