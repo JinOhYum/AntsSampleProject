@@ -7,25 +7,109 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+    <include
+        android:id="@+id/layout_top_bar"
+        layout="@layout/layout_top_bar"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/layout_top_bar" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_f5f5f6"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="11sp"
+            android:textColor="@color/color_5c5b5f"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="23dp"
+            android:text="@string/text_bottom_logo" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
+        android:background="@drawable/custom_top_radius_16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <LinearLayout
+            android:id="@+id/layout_moitor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/iv_monitor"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_monitor_on"/>
+            <TextView
+                android:id="@+id/tv_monitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="모니터링"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+        </LinearLayout>
 
-
-
+        <LinearLayout
+            android:id="@+id/layout_history"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_history"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_history_off"/>
+            <TextView
+                android:id="@+id/tv_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="이력관리"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_setting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_setting"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_setting_off"/>
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="설정"
+                android:textColor="#ffffff"
+                android:textSize="12sp"/>
+        </LinearLayout>
 
     </LinearLayout>
 

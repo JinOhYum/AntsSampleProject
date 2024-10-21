@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".view.fragment.MonitorFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27.5dp"
+                android:src="@drawable/ic_monitor_title"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/custom_radius_7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_heart_rate"/>
+
+                    <TextView
+                        android:id="@+id/tv_heart_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- -"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        android:lineSpacingExtra="13sp"
+                        android:letterSpacing="-0.05"
+                        android:maxLines="1"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_radius_12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:paddingStart="11dp"
+                        android:paddingEnd="11dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/white"
+                            android:text="@string/text_heart_rate"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="7dp"
+                    android:gravity="center"
+                    android:background="@drawable/custom_radius_7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_respiration_rate"/>
+
+                    <TextView
+                        android:id="@+id/tv_respiration_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- -"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        android:lineSpacingExtra="13sp"
+                        android:letterSpacing="-0.05"
+                        android:maxLines="1"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_radius_12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:paddingStart="11dp"
+                        android:paddingEnd="11dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/white"
+                            android:text="@string/text_respiratory_rate"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="7dp"
+                    android:gravity="center"
+                    android:background="@drawable/custom_radius_7dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_body_temperature"/>
+
+                    <TextView
+                        android:id="@+id/tv_body_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- -"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        android:lineSpacingExtra="13sp"
+                        android:letterSpacing="-0.05"
+                        android:maxLines="1"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_radius_12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:paddingStart="11dp"
+                        android:paddingEnd="11dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/white"
+                            android:text="@string/text_body_temperature"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/color_eeeeee"
+                android:layout_marginTop="26dp"/>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/ic_test_graph"
+                android:scaleType="fitXY"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_test_graph"
+                android:scaleType="fitXY"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="27.5dp"
+                android:layout_marginBottom="51dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3.5dp"
+                    android:src="@drawable/ic_warning"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:padding="0dp"
+                    android:letterSpacing="-0.04"
+                    android:layout_marginStart="9.5dp"
+                    android:text="@string/text_monitor_warning"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

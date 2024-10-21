@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">AntSampleProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="bottom_device_title">패치의 전원을 켠 후 확인을 눌러주세요!</string>
+    <string name="text_ok">확인</string>
+    <string name="device_connection">기기 연결 하기</string>
+    <string name="text_history">이력관리</string>
+    <string name="text_history_detail">이력 자세히 보기</string>
+    <string name="text_setting">설정</string>
+    <string name="text_heart_rate">분당 심박수</string>
+    <string name="text_respiratory_rate">분당 호흡수</string>
+    <string name="text_body_temperature">체온(℃)</string>
+    <string name="text_monitor_warning">화면이 꺼지거나 앱을 종료하면 모니터링이 중단됩니다.\n항상 이 화면을 유지해 주세요.</string>
+    <string name="text_bottom_logo">Copyright ⓒ 2024A&amp;T Solution All rights reserved</string>
 </resources>
