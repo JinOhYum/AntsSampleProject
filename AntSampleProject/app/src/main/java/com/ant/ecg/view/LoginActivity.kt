@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * AndroidEntryPoint = Hilt 에서 제공되는 DI 함수로 DI 를 사용하기 위해 Activity 위에 어노테이션으로 지정
+ * RestFul API 테스트 샘플
  * **/
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {

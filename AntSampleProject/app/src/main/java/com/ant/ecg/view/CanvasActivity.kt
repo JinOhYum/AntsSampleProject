@@ -20,6 +20,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Socket 통신 테스트 샘플
+ * 그림판을 모티브로 만듬
+ * **/
 @AndroidEntryPoint
 class CanvasActivity : AppCompatActivity() {
 

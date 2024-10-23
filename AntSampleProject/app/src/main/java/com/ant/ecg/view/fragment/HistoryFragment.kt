@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.ant.ecg.R
 
+/**
+ * 이력관리 화면
+ * **/
 class HistoryFragment : Fragment() {
     companion object {
         fun newInstance() = HistoryFragment()

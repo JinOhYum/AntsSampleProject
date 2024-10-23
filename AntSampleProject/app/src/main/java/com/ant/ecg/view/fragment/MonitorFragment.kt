@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.ant.ecg.R
 import com.ant.ecg.databinding.FragmentMonitorBinding
 
+/**
+ * 모니터링 화면
+ * **/
 class MonitorFragment : Fragment() {
     companion object {
         fun newInstance() = MonitorFragment()
