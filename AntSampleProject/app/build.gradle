@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+//    id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -15,7 +16,7 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,7 +54,7 @@ dependencies {
     //dagger hilt
     implementation libs.hilt.android
     implementation libs.androidx.asynclayoutinflater
-    kapt libs.hilt.compiler
+    ksp libs.hilt.compiler
 
     //retrofit2
     implementation libs.retrofit
@@ -77,4 +78,12 @@ dependencies {
 
     implementation libs.androidx.core.splashscreen
 
+    //ROOM 로컬 DB
+    implementation libs.androidx.room.runtime
+    ksp libs.androidx.room.compiler
+    implementation libs.androidx.room.ktx
+
+    implementation libs.androidx.multidex
+
+    implementation libs.androidx.fragment.ktx
 }

@@ -16,10 +16,18 @@ import com.ant.ecg.view.fragment.HistoryFragment
 import com.ant.ecg.view.fragment.MonitorFragment
 import com.ant.ecg.view.fragment.SettingFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
+
+    private companion object {
+        const val INIT_MONITOR_INDEX = 0//모니터링 프래그먼트
+        const val INIT_HISTORY_INDEX = 1//이력조회 프래그먼트
+        const val INIT_SETTING_INDEX = 2//설정 프래그먼트
+    }
 
     private lateinit var binding : ActivityMainBinding
 
@@ -159,9 +167,9 @@ class MainActivity : BaseActivity() {
          * 하단 네비게이션바 position 에 맞춰 UI 변경
          * **/
         when(bottomPosition){
-            0->{//모니터링
+            INIT_MONITOR_INDEX->{//모니터링
                 binding.layoutTopBar.layoutTopLeft.visibility = View.VISIBLE
-                binding.layoutTopBar.tvTitle.visibility = View.GONE
+                binding.layoutTopBar.tvTitle.visibility = View.INVISIBLE
                 binding.layoutTopBar.layoutConnection.visibility = View.VISIBLE
                 binding.ivMonitor.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_monitor_on))
                 binding.tvMonitor.setTextColor(ContextCompat.getColor(this,R.color.white))
@@ -170,11 +178,11 @@ class MainActivity : BaseActivity() {
                 binding.ivSetting.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_setting_off))
                 binding.tvSetting.setTextColor(ContextCompat.getColor(this,R.color.color_0c81bf))
             }
-            1->{//이력관리
-                binding.layoutTopBar.layoutTopLeft.visibility = View.GONE
+            INIT_HISTORY_INDEX->{//이력관리
+                binding.layoutTopBar.layoutTopLeft.visibility = View.INVISIBLE
                 binding.layoutTopBar.tvTitle.visibility = View.VISIBLE
-                binding.layoutTopBar.layoutConnection.visibility = View.GONE
-                binding.layoutTopBar.tvTitle.text = ContextCompat.getString(this , R.string.text_history)
+                binding.layoutTopBar.layoutConnection.visibility = View.INVISIBLE
+                binding.layoutTopBar.tvTitle.text = getText(R.string.text_history)
                 binding.ivMonitor.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_monitor_off))
                 binding.tvMonitor.setTextColor(ContextCompat.getColor(this,R.color.color_0c81bf))
                 binding.ivHistory.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_history_on))
@@ -182,11 +190,11 @@ class MainActivity : BaseActivity() {
                 binding.ivSetting.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_setting_off))
                 binding.tvSetting.setTextColor(ContextCompat.getColor(this,R.color.color_0c81bf))
             }
-            2->{//설정
-                binding.layoutTopBar.layoutTopLeft.visibility = View.GONE
+            INIT_SETTING_INDEX->{//설정
+                binding.layoutTopBar.layoutTopLeft.visibility = View.INVISIBLE
                 binding.layoutTopBar.tvTitle.visibility = View.VISIBLE
-                binding.layoutTopBar.layoutConnection.visibility = View.GONE
-                binding.layoutTopBar.tvTitle.text = ContextCompat.getString(this , R.string.text_setting)
+                binding.layoutTopBar.layoutConnection.visibility = View.INVISIBLE
+                binding.layoutTopBar.tvTitle.text = getText(R.string.text_setting)
                 binding.ivMonitor.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_monitor_off))
                 binding.tvMonitor.setTextColor(ContextCompat.getColor(this,R.color.color_0c81bf))
                 binding.ivHistory.setImageDrawable(ContextCompat.getDrawable(this , R.drawable.ic_history_off))
