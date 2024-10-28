@@ -28,6 +28,7 @@ class HistoryFragment : Fragment() {
 
     private lateinit var binding : FragmentHistoryBinding
 
+    //리사이클러뷰 어뎁터
     private val adapter : HistoryAdapter = HistoryAdapter()
 
     private val viewModel : HistoryViewModel by  viewModels<HistoryViewModel>()
